@@ -1,8 +1,10 @@
 import { Router } from 'express'
 import uuid from 'uuid/v4'
 import { update, remove } from 'ramda'
-
+import mongoose from 'mongoose'
 const router = Router()
+
+const Card = mongoose.model('Card') 
 
 let cards = [
   { id: uuid(), fact: { name: "Independencia de Afganistan", year: "1919" } },
@@ -14,24 +16,27 @@ let cards = [
   { id: uuid(), fact: { name: "Independencia de Argentina", year: "1816" } }
 ]
 
-router.get('/', (req, res) => res.json(cards)) //Returns all cards
-router.put('/:id', (req, res) => {
-  const { id } = req.params
-  const card = req.body
-  cards = update(cards.findIndex(_ => _.id === id ), card, cards)
+router.get('/', async(req, res) => res.send(await Card.find({}))) //Returns all cards
+
+//ojo: acá se actualiza todo lo que se envía y se pisan valores.
+router.put('/:id', async(req, res) => {
+  const card = await Card.findById(req.params.id)
+  card.name = req.body.name
+  card.year = req.body.year
+  card.image = req.body.image
+  card.group = req.body.group
+
+  await card.save()
   res.send({ status: 'ok' })
 })
-router.post('/', (req,res) => {
-  const card = {
-    id: uuid(),
-    fact: req.body.fact
-  }
-  cards = update(-1, card, cards)
+router.post('/', async (req,res) => {
+  const card = req.body
+  await Card.create([card])
   res.send({status: 'ok'})
 })
-router.delete('/:id', (req, res) => {
-  const { id } = req.params
-  cards = remove(cards.findIndex(_ => _.id === id ), 1, cards)
+router.delete('/:id', async (req, res) => {
+  const card = await Card.findById(req.params.id)
+  await card.remove()
   res.send({status: 'ok'})
 })
 
