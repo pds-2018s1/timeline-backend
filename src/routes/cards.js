@@ -31,8 +31,8 @@ router.put('/:id', async(req, res) => {
 })
 router.post('/', async (req,res) => {
   const card = req.body
-  await Card.create([card])
-  res.send({status: 'ok'})
+  const data = await Card.create([card])
+  res.send({status: 'ok', data})
 })
 router.delete('/:id', async (req, res) => {
   const card = await Card.findById(req.params.id)
