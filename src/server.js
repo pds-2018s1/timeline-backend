@@ -4,9 +4,11 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import './model/Card'
+import './model/Match'
 
 mongoose.connect('mongodb://localhost:27017/timeline')
 import cards from './routes/cards'
+import match from './routes/match'
 
 
 const app = express()
@@ -35,5 +37,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/cards', cards) 
+app.use('/match', match) 
 
 export default app
