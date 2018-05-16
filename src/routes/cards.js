@@ -34,6 +34,17 @@ router.post('/', async (req,res) => {
   const data = await Card.create([card])
   res.send({status: 'ok', data})
 })
+
+//servicio para guardar una lista de cartas -- sin comportamiento asociado en la aplicación
+router.post('/list', async (req,res) => {
+  const cards = req.body
+  for (let index = 0; index < cards.length; index++) {
+    const card = cards[index];
+    const data = await Card.create([card])
+  }
+  res.send({status: 'ok'})
+})
+
 router.delete('/:id', async (req, res) => {
   const card = await Card.findById(req.params.id)
   await card.remove()
