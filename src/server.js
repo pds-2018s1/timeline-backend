@@ -6,7 +6,8 @@ import mongoose from 'mongoose'
 import './model/Card'
 import './model/Match'
 
-mongoose.connect('mongodb://localhost:27017/timeline')
+//mongoose.connect('mongodb://localhost:27017/timeline')
+mongoose.connect('mongodb://timeline_user:pdsUser@ds125680.mlab.com:25680/timeline')
 import cards from './routes/cards'
 import match from './routes/match'
 
