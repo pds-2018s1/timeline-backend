@@ -6,17 +6,11 @@ const router = Router()
 
 const Card = mongoose.model('Card') 
 
-let cards = [
-  { id: uuid(), fact: { name: "Independencia de Afganistan", year: "1919" } },
-  { id: uuid(), fact: { name: "Independencia de Albania", year: "1912" } },
-  { id: uuid(), fact: { name: "Independencia de Algeria", year: "1962" } },
-  { id: uuid(), fact: { name: "Independencia de Angola", year: "1975" } },
-  { id: uuid(), fact: { name: "Independencia de Anguilla", year: "1967" } },
-  { id: uuid(), fact: { name: "Independencia de Antigua y barbuda", year: "1981" } },
-  { id: uuid(), fact: { name: "Independencia de Argentina", year: "1816" } }
-]
 
 router.get('/', async(req, res) => res.send(await Card.find({}))) //Returns all cards
+
+router.get('/:id', async(req,res) => res.send(await Card.findById(req.params.id)))
+
 
 //ojo: acá se actualiza todo lo que se envía y se pisan valores.
 router.put('/:id', async(req, res) => {
