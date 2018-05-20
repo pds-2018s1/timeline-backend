@@ -38,14 +38,26 @@ describe('Model - Card', () => {
           expect(await Card.count()).toEqual(1)
         })
       })
-    describe('delete()', () =>{
+    describe('delete()', async () =>{
         it('debe eliminar el elemento indicado por el id', async() => {
             const saved = await new Card({ name: 'Quilmes A  CLub', year: '1887' }).save()
             expect(await Card.count()).toEqual(1)
-            const card = await Card.findById(saved["_id"])
-            await card.remove()
+            await Card.deleteOne({_id: saved["_id"]})
             expect(await Card.count()).toEqual(0)
         })
     })
+
+    describe('update()', async () => {
+        it('debe actualizar correctamente un valor', async () =>{
+            const saved = await new Card({ name: 'Quilmes A  CLub', year: '1887', group: "Deportes" }).save()
+            saved.group = "Los más grandes"
+            await saved.save()
+            
+            const r_saved = await Card.findById(saved["_id"])
+            expect(r_saved.group).toEqual("Los más grandes")
+        })
+    })
+
+    
 
 })
