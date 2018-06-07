@@ -17,14 +17,18 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "lint": "eslint ./**/*.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "mongoose": "^5.1.4",
     "morgan": "^1.9.0",
     "ramda": "^0.25.0",
     "uuid": "^3.2.1"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./jest.setup.js"
   }
 }
