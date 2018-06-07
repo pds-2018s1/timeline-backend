@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand --watch",
+    "test": "jest --runInBand",
     "lint": "eslint ./**/*.js"
   },
   "dependencies": {
