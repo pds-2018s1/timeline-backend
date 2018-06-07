@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "lint": "eslint ./**/*.js"
   },
   "dependencies": {
