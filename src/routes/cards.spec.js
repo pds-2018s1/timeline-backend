@@ -4,7 +4,6 @@ import { Mockgoose } from 'mockgoose'
 import mongoose from 'mongoose'
 
 const mockgoose = new Mockgoose(mongoose)
-const Cards = mongoose.model('Card')
 
 describe('Cards endpoints', () => {
   beforeAll(async () => {

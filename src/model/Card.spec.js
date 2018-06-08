@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import { Mockgoose } from 'mockgoose'
 import './Card'
 
-const { ObjectId } = mongoose.Types
 
 const mockgoose = new Mockgoose(mongoose)
 

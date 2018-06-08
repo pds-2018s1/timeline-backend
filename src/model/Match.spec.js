@@ -2,8 +2,6 @@ import mongoose from 'mongoose'
 import { Mockgoose } from 'mockgoose'
 import './Match'
 
-const { ObjectId } = mongoose.Types
-
 const mockgoose = new Mockgoose(mongoose)
 
 const Match = mongoose.model('Match')

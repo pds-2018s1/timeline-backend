@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand --forceExit",
+    "test": "jest --runInBand --forceExit --coverage",
     "lint": "eslint ./**/*.js"
   },
   "dependencies": {
@@ -30,5 +30,8 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./jest.setup.js"
+  },
+  "engines": {
+    "node": ">=9.0.0"
   }
 }
