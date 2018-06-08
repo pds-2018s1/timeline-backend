@@ -1,6 +1,4 @@
 import { Router } from 'express'
-import uuid from 'uuid/v4'
-import { update, remove } from 'ramda'
 import mongoose from 'mongoose'
 const router = Router()
 

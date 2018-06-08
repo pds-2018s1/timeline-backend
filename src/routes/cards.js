@@ -1,6 +1,4 @@
 import { Router } from 'express'
-import uuid from 'uuid/v4'
-import { update, remove } from 'ramda'
 import mongoose from 'mongoose'
 const router = Router()
 
@@ -34,7 +32,7 @@ router.post('/list', async (req,res) => {
   const cards = req.body
   for (let index = 0; index < cards.length; index++) {
     const card = cards[index];
-    const data = await Card.create([card])
+    await Card.create([card])
   }
   res.send({status: 'ok'})
 })

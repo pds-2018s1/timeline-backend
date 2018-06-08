@@ -4,7 +4,6 @@ import { Mockgoose } from 'mockgoose'
 import mongoose from 'mongoose'
 
 const mockgoose = new Mockgoose(mongoose)
-const Match = mongoose.model('Match')
 
 describe('Matches endpoints', () => {
   beforeAll(async () => {
@@ -97,8 +96,7 @@ describe('Matches endpoints', () => {
     await request(app).get('/match/'+id)
     .expect(200)
     .expect (res => 
-      expect(res.body).toEqual
-      ({
+      expect(res.body).toEqual({
         __v: expect.any(Number),
         _id: expect.any(String),   
         timeline: [],
