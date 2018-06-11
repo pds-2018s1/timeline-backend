@@ -17,5 +17,8 @@
   "env": {
     "jasmine": true,
     "es6": true
+  },
+  "globals": {
+    "jest": false
   }
 }
