@@ -8,16 +8,17 @@
     "babel-eslint": "^8.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "codecov": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
     "jest": "^22.4.3",
+    "mockgoose": "^7.3.5",
     "nodemon": "^1.17.4",
-    "supertest": "^3.0.0",
-    "mockgoose": "^7.3.5"
+    "supertest": "^3.0.0"
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand --forceExit --coverage",
+    "test": "jest --runInBand --forceExit --coverage && codecov",
     "lint": "eslint ./**/*.js"
   },
   "dependencies": {
@@ -29,7 +30,17 @@
     "uuid": "^3.2.1"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./jest.setup.js"
+    "setupTestFrameworkScriptFile": "./jest.setup.js",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 91,
+        "lines": 92,
+        "statements": 92
+      }
+    }
   },
   "engines": {
     "node": ">=9.0.0"
