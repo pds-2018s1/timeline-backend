@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const schema = new Schema({
   name: { type: String, required: true },
@@ -9,9 +9,9 @@ const schema = new Schema({
     type: String,
     required: false,
     default:
-      "https://cdn.xl.thumbs.canstockphoto.com/question-mark-eps-vector_csp14347140.jpg"
+      'https://cdn.xl.thumbs.canstockphoto.com/question-mark-eps-vector_csp14347140.jpg'
   },
-  group: { type: String, required: false, default: "General" }
-});
+  group: { type: String, required: false, default: 'General' }
+})
 
-mongoose.model("Card", schema);
+mongoose.model('Card', schema)

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const schema = new Schema({
   timeline: { type: Array, required: true },
@@ -8,6 +8,6 @@ const schema = new Schema({
   players: { type: Array, required: true },
   size: { type: Number, required: true },
   name: { type: String, required: true }
-});
+})
 
-mongoose.model("Match", schema);
+mongoose.model('Match', schema)
