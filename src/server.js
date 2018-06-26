@@ -5,7 +5,6 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import './model/Card'
 import './model/Match'
-import { V4MAPPED } from 'dns';
 import cards from './routes/cards'
 import match from './routes/match'
 
