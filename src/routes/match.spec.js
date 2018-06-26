@@ -1,12 +1,20 @@
 import request from 'supertest'
-import app from '../server'
+import start from '../server'
 import { Mockgoose } from 'mockgoose'
 import mongoose from 'mongoose'
 
 const mockgoose = new Mockgoose(mongoose)
 
 describe('Matches endpoints', () => {
+
+  let app;
+
+  beforeEach(() => {
+    app = start();
+  })
+
   beforeAll(async () => {
+    process.env.MONGO_URL = 'mongodb://example.com/TestingDB'
     await mockgoose.prepareStorage()
     await mongoose.connect('mongodb://example.com/TestingDB')
   })
