@@ -8,12 +8,14 @@ const Match = mongoose.model('Match')
 
 describe('Model - Match', () => {
   beforeAll(async () => {
+    process.env.MONGO_URL = 'mongodb://example.com/TestingDB'
     await mockgoose.prepareStorage()
     await mongoose.connect('mongodb://example.com/TestingDB')
   })
   afterEach(async () => {
     mockgoose.helper.reset()
   })
+
 
   describe('save()', async () => {
     it('debe requerir size', async () => {
@@ -30,6 +32,7 @@ describe('Model - Match', () => {
           'Match validation failed: size: Path `size` is required.'
         )
       }
+
     })
   })
   describe('delete()', async () => {
