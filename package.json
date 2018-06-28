@@ -11,15 +11,27 @@
     "codecov": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
+    "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "lint-staged": "^7.2.0",
     "mockgoose": "^7.3.5",
     "nodemon": "^1.17.4",
+    "prettier": "^1.13.5",
     "supertest": "^3.0.0"
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "jest --runInBand --forceExit --coverage && codecov",
-    "lint": "eslint ./**/*.js"
+    "test": "jest --runInBand --forceExit --coverage",
+    "test-coverage": "yarn test && codecov",
+    "lint": "eslint ./**/*.js",
+    "pretty": "prettier --write \"src/**/*.js\"",
+    "precommit": "lint-staged && yarn test"
+  },
+  "lint-staged": {
+      "*.js": [
+          "yarn pretty",
+          "git add"
+      ]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
