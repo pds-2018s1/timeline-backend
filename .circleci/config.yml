@@ -34,4 +34,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run: docker build -t g2pdes/timeline-backend:latest .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push g2pdes/timeline-backend:latest
         
