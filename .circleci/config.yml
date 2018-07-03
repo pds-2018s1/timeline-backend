@@ -38,10 +38,10 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
 
-      - run: docker build -t g2pdes/timeline-backend:latest .
-      - run: docker tag g2pdes/timeline-backend:latest registry.heroku.com/$HEROKU_APP_NAME_BACKEND/web
+      - run: docker build -t g2pdes/timeline-b:latest .
+      - run: docker tag g2pdes/timeline-b:latest registry.heroku.com/$HEROKU_APP_NAME_BACKEND/web
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push g2pdes/timeline-backend:latest
+      - run: docker push g2pdes/timeline-b:latest
       - run: docker login -u $HEROKU_USERNAME -p $HEROKU_PASSWORD registry.heroku.com
       - run: docker push registry.heroku.com/$HEROKU_APP_NAME_BACKEND/web
       - run: wget -qO- https://toolbelt.heroku.com/install.sh | sh    

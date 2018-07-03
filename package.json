@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
+    "start-prod": "babel-node index.js",
     "test": "jest --runInBand --forceExit --coverage",
     "test-coverage": "yarn test && codecov",
     "lint": "eslint ./**/*.js",
